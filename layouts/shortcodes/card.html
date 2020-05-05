@@ -1,16 +1,16 @@
 <div class="post_card">
 <div class="post_header">
-	<h4>
-		{{ with .Get "link"}}<a href="{{.}}">{{ end }}{{ with .Get "title"}}{{.}}{{ end }}
-		{{ with .Get "link"}}</a>{{ end }}
-	</h4>
+{{ with .Get "link"}}<a href="{{.}}">{{ end }}{{ with .Get "title"}}{{.}}{{ end }}{{ with .Get "link"}}</a>{{ end }}
 </div>
+{{ if .Get "img" }}
 <div class="post_img">
-	<p>{{ with .Get "link"}}<a href="{{.}}">{{ end }}
-		<img {{ with .Get "img"}}src="{{.}}"{{ end }} {{ with .Get "title"}}alt="{{.}}"{{ end }}>{{ with .Get "link"}}</a>{{ end }}
-	</p>
+{{ with .Get "link"}}<a href="{{.}}">{{ end }}
+<img class="post_img" {{ with .Get "img"}}src="{{.}}"{{ end }} {{ with .Get "title"}}alt="{{.}}"{{ end }}/>
+{{ with .Get "link"}}</a>{{ end }}
 </div>	
+{{ else }}
 <div class="post_text">
-	<p>{{.Inner}}</p>
+{{.Inner}}
 </div>
+{{ end }}
 </div>
