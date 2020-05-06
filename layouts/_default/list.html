@@ -7,7 +7,11 @@
 {{ if or (eq .Kind "taxonomy") (eq .Kind "taxonomyTerm") }}
 <ul>
 	{{ range .Pages }}
+		{{ if isset .Params "linktitle" }}
+		<li><a href="{{.RelPermalink}}">{{.LinkTitle}}</a></li>
+		{{ else}}
 		<li><a href="{{.RelPermalink}}">{{.Title}}</a></li>
+		{{ end }}
 	{{ end }}
 </ul>
 {{end}}
