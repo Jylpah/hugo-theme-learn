@@ -19,7 +19,7 @@
 	{{else if eq $sortTerm "Name"}}
 		{{template "childs" dict "menu" $pages.ByTitle "style" $style "showhidden" $showhidden "count" 1 "depth" $depth "pages" .Site.Pages "description" $withDescription "sortTerm" $sortTerm}}
 	{{else if eq $sortTerm "PublishDate"}}
-		{{template "childs" dict "menu" $pages.ByPublishDate "style" $style "showhidden" $showhidden "count" 1 "depth" $depth "pages" .Site.Pages "description" $withDescription "sortTerm" $sortTerm}}
+		{{template "childs" dict "menu" $pages.ByPublishDate.Reverse "style" $style "showhidden" $showhidden "count" 1 "depth" $depth "pages" .Site.Pages "description" $withDescription "sortTerm" $sortTerm}}
 	{{else if eq $sortTerm "Date"}}
 		{{template "childs" dict "menu" $pages.ByDate "style" $style "showhidden" $showhidden "count" 1 "depth" $depth "pages" .Site.Pages "description" $withDescription "sortTerm" $sortTerm}}
 	{{else if eq $sortTerm "Length"}}
@@ -41,12 +41,12 @@
 					{{$numn := add $num $.count }}
 
 {{(printf "<h%d>" $numn)|safeHTML}}
-<a href="{{.RelPermalink}}" >{{ .Title }}</a>
+<a href="{{.RelPermalink}}" >{{ .LinkTitle }}</a>
 {{(printf "</h%d>" $numn)|safeHTML}}
 
 				{{else}}
 {{(printf "<%s>" $.style)|safeHTML}}
-<a href="{{.RelPermalink}}" >{{ .Title }}</a>
+<a href="{{.RelPermalink}}" >{{ .LinkTitle }}</a>
 {{(printf "</%s>" $.style)|safeHTML}}
 				{{end}}
 
